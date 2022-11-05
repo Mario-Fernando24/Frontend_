@@ -24,8 +24,6 @@ class UniversityProviders extends GetConnect{
       }
       List<University> universities =University.fromJsonList(response.body);
       return universities;
-
-      //  List<University> products =University.fromJsonList(response.body["results"]);
     
       
     }

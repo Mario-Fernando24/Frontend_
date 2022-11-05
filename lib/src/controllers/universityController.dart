@@ -37,11 +37,14 @@ class UniversityController extends GetxController{
        bool isValidForm(String number){
          
             if(number.isEmpty){    
-              Get.snackbar("Formulario no valido","Debes ingresar el email");
+              Get.snackbar("Formulario no valido","Debes ingresar un numero de telefono");
               return false;
             }else  if(imageFile1==null){
               Get.snackbar("Por favor","Imagen es obligatoria");
               return false;
+            }else if(number[0]!="3"){
+            Get.snackbar("Formulario no valido", "No es un numero de telefono valido");
+            return false;      
             }
             return true;
        }

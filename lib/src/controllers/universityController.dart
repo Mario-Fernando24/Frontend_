@@ -12,6 +12,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 class UniversityController extends GetxController{
 
   UniversityProviders  rickProviders = UniversityProviders();
+  TextEditingController numberStudentController = TextEditingController();
 
   ImagePicker picker = ImagePicker();
   //escoger .io
@@ -20,6 +21,32 @@ class UniversityController extends GetxController{
      UniversityController() {
         getUniversity();
       }
+
+
+
+      void add(){
+        String numberPhone=numberStudentController.text.toString();
+          if(isValidForm(numberPhone)){
+
+          }else{
+              Get.snackbar("Formulario no valido","Campos vacios");
+          }
+      }
+
+
+       bool isValidForm(String number){
+         
+            if(number.isEmpty){    
+              Get.snackbar("Formulario no valido","Debes ingresar el email");
+              return false;
+            }else  if(imageFile1==null){
+              Get.snackbar("Por favor","Imagen es obligatoria");
+              return false;
+            }
+            return true;
+       }
+
+      
 
       Future<List<University>> getUniversity() async {
           return await rickProviders.getAll();

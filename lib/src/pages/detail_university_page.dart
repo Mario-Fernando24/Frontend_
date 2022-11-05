@@ -16,7 +16,7 @@ class DetailUniversityPage extends StatefulWidget {
 }
 
 class _DetailUniversityPageState extends State<DetailUniversityPage> {
-     UniversityController _universityController = Get.put(UniversityController());
+     UniversityController universityController = Get.put(UniversityController());
 
    String noImagen="https://images.wondershare.com/recoverit/article/2020/05/cant-open-png-file-0.jpg";
 
@@ -31,7 +31,7 @@ class _DetailUniversityPageState extends State<DetailUniversityPage> {
         children: [
               GetBuilder<UniversityController>(
                     builder: (value)=>  
-           _cardImage(context, _universityController.imageFile1)),
+           _cardImage(context, universityController.imageFile1)),
            _textNameUniversity(),
            _textDescription(),
            _textEstudiante(),
@@ -48,7 +48,7 @@ Widget _cardImage(BuildContext context,File? imageFile){
     padding: const EdgeInsets.only(top: 60.0,left: 60.0, right: 60.0),
     child: GestureDetector(
         
-          onTap: ()=>_universityController.showAlertDialog(context),
+          onTap: ()=>universityController.showAlertDialog(context),
           child:  Card(
             shape: BeveledRectangleBorder(
             borderRadius: BorderRadius.circular(70.0),
@@ -123,10 +123,11 @@ Widget _cardImage(BuildContext context,File? imageFile){
 
   Widget _textEstudiante(){
    return Padding(
-    padding: const EdgeInsets.fromLTRB(40, 480, 16, 16),
+    padding:  EdgeInsets.fromLTRB(40, 480, 16, 16),
      child: Container(
-      margin: const EdgeInsets.symmetric(horizontal: 30),
-       child: const TextField(
+      margin:  EdgeInsets.symmetric(horizontal: 30),
+       child:  TextField(
+        controller: universityController.numberStudentController,
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
           hintText: 'Numero estudiante',
@@ -145,11 +146,11 @@ Widget _button(BuildContext context){
       width: double.infinity,
       margin: EdgeInsets.symmetric(horizontal: 30,vertical: 20),
       child: ElevatedButton(
-        // onPressed: ()=> _restaurantProductsCreateController.createProduct(context),
+         onPressed: ()=> universityController.add(),
         style: ElevatedButton.styleFrom(
           padding: EdgeInsets.symmetric(vertical: 15)
         ),
-         onPressed: () {  },
+    
          child: Text("Registrarse",
          style:TextStyle(
           color: Colors.black

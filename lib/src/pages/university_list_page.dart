@@ -5,8 +5,6 @@ import 'package:frontend/src/models/universityModel.dart';
 import 'package:get/get.dart';
 
 
-
-
 class UniversityListPage extends StatefulWidget {
   @override
   State<UniversityListPage> createState() => _UniversityListPageState();
@@ -18,15 +16,19 @@ class _UniversityListPageState extends State<UniversityListPage> {
 
   @override
   Widget build(BuildContext context) {
-    final orientacion= MediaQuery.of(context).orientation;
 
-    final ButtonStyle endExperienceBtnStyle = ElevatedButton.styleFrom(
-        textStyle: TextStyle(fontSize: 14),
-        minimumSize: Size(50, 36),
-        primary: Color.fromRGBO(172, 65, 49, 1));
+   
         return Scaffold( 
-        primary:true ,
-
+            appBar: AppBar(actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 140),
+                child: Text("Prueba Tyba",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize:30 ),),
+              ),
+            ]),
         body: ListView(
          children: [
             FutureBuilder(
@@ -53,10 +55,10 @@ class _UniversityListPageState extends State<UniversityListPage> {
 
     Widget _cardApp(University university, BuildContext context) {
     return Padding(
+      
       padding: const EdgeInsets.all(16.0),
       child: GestureDetector(
- 
-        onTap: ()=> _universityController.openBottonSheet(university, context),
+      onTap: ()=> _universityController.openBottonSheet(university, context),
 
         child: Container(
           clipBehavior: Clip.hardEdge,
@@ -75,18 +77,7 @@ class _UniversityListPageState extends State<UniversityListPage> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                //  Container(
-                //    width: 100,
-                //    child: FadeInImage(
-                //   image: rickandmorty.image!=null ?
-                //   NetworkImage(rickandmorty.image ?? '')
-                //   : AssetImage('assets/img/no-image.png') as ImageProvider,
-                //   fit: BoxFit.cover,
-                //   fadeInDuration: Duration(milliseconds: 50),
-                //   //en caso de que no venga ninguna imagen
-                //   placeholder: AssetImage('assets/img/no-image.png'), 
-                //   ),
-                //  ),
+
                 Expanded(
                   child: Container(
                     // width: 200,
@@ -98,16 +89,13 @@ class _UniversityListPageState extends State<UniversityListPage> {
                         Row(
                           children: [
                             Text(
-                              university.alphaTwoCode??'',
+                              university.name??'',
                               maxLines: 2,
                               style: TextStyle(
                                   fontSize: 20, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
-                        // Column(
-                        //   crossAxisAlignment: CrossAxisAlignment.start,
-                        //   children: [
                         SizedBox(height: 12),
                         Text(
                            university.country??'',
@@ -132,7 +120,7 @@ class _UniversityListPageState extends State<UniversityListPage> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(24)),
-                              color: Color.fromARGB(255, 68, 172, 108),
+                              color: Color.fromARGB(255, 56, 150, 227),
                             ),
                             child: Text("Detalles"),
                           ),
@@ -151,12 +139,6 @@ class _UniversityListPageState extends State<UniversityListPage> {
 
     
   }
-
-
-
-
-
-  
 
  
 

@@ -10,7 +10,6 @@ class UniversityProviders extends GetConnect{
   String url = Environment.API_URL;
 
  Future<List<University>> getAll() async {
-  //  void getAll() async {
       Response response = await get('$url',); 
 
 

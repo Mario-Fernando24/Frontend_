@@ -34,6 +34,8 @@ class _DetailUniversityPageState extends State<DetailUniversityPage> {
            _cardImage(context, _universityController.imageFile1)),
            _textNameUniversity(),
            _textDescription(),
+           _textEstudiante(),
+           _button(context),
         
           ],
        )
@@ -48,6 +50,9 @@ Widget _cardImage(BuildContext context,File? imageFile){
         
           onTap: ()=>_universityController.showAlertDialog(context),
           child:  Card(
+            shape: BeveledRectangleBorder(
+            borderRadius: BorderRadius.circular(70.0),
+          ),
           elevation: 3,
           child: Container(
             height:  MediaQuery.of(context).size.height*0.3,
@@ -55,7 +60,7 @@ Widget _cardImage(BuildContext context,File? imageFile){
             
             child: imageFile!=null? 
               ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(70.0),
 
                 child: Image.file(
                   imageFile,
@@ -85,7 +90,7 @@ Widget _cardImage(BuildContext context,File? imageFile){
   
   Widget _textNameUniversity(){
     return Padding(
-    padding: const EdgeInsets.only(top: 0.0,left: 100.0, right: 60.0),
+    padding: const EdgeInsets.only(top: 0.0,left: 80.0, right: 60.0),
 
       child: Container(
         alignment: Alignment.centerLeft,
@@ -115,5 +120,43 @@ Widget _cardImage(BuildContext context,File? imageFile){
       ),
     );
   }
+
+  Widget _textEstudiante(){
+   return Padding(
+    padding: const EdgeInsets.fromLTRB(40, 480, 16, 16),
+     child: Container(
+      margin: const EdgeInsets.symmetric(horizontal: 30),
+       child: const TextField(
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+          hintText: 'Numero estudiante',
+          prefixIcon: Icon(Icons.numbers_outlined)
+        ),
+       ),
+     ),
+   );
+}
+
+
+Widget _button(BuildContext context){
+  return Padding(
+    padding: const EdgeInsets.fromLTRB(40, 540, 16, 16),
+    child: Container(
+      width: double.infinity,
+      margin: EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+      child: ElevatedButton(
+        // onPressed: ()=> _restaurantProductsCreateController.createProduct(context),
+        style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.symmetric(vertical: 15)
+        ),
+         onPressed: () {  },
+         child: Text("Registrarse",
+         style:TextStyle(
+          color: Colors.black
+         ),),
+         ),
+    ),
+  );
+}
 
 }
